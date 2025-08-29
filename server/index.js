@@ -155,9 +155,8 @@ app.post(
     const { name, email, subject, message } = req.body;
 
     try {
-      // Configure nodemailer (you'll need to set up your email credentials)
-      const transporter = nodemailer.createTransporter({
-        service: "gmail", // or your email service
+      const transporter = nodemailer.createTransport({
+        service: "gmail",
         auth: {
           user: process.env.EMAIL_USER,
           pass: process.env.EMAIL_PASS,
@@ -178,16 +177,7 @@ app.post(
         `,
       };
 
-      // For demo purposes, we'll just log the message
-      console.log("Contact form submission:", {
-        name,
-        email,
-        subject,
-        message,
-      });
-
-      // Uncomment to actually send email:
-      // await transporter.sendMail(mailOptions);
+      await transporter.sendMail(mailOptions);
 
       res.json({
         success: true,
