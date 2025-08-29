@@ -1,0 +1,27 @@
+{
+  "name": "zoubair-portfolio",
+  "version": "1.0.0",
+  "description": "Professional Portfolio - Zoubair Mabrouk",
+  "main": "server/index.js",
+  "scripts": {
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "server": "cd server && npm run dev",
+    "client": "cd client && npm run dev",
+    "build": "cd client && npm run build",
+    "start": "cd server && npm start",
+    "setup": "npm install && cd server && npm install && cd ../client && npm install"
+  },
+  "keywords": [
+    "portfolio",
+    "react",
+    "express",
+    "nodejs"
+  ],
+  "author": "Zoubair Mabrouk",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/react": "^19.1.12",
+    "@types/react-dom": "^19.1.9",
+    "concurrently": "^8.2.2"
+  }
+}
