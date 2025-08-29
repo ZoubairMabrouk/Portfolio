@@ -16,7 +16,7 @@ const Projects = () => {
   useEffect(() => {
     const fetchProjects = async () => {
       try {
-        const response = await axios.get('/api/projects')
+        const response = await axios.get('https://portfolio-backend-sand-two.vercel.app/api/projects')
         if (response.data.success) {
           setProjects(response.data.projects)
         }

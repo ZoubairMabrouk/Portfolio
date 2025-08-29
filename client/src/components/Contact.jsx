@@ -31,7 +31,7 @@ const Contact = () => {
     setIsSubmitting(true)
 
     try {
-      const response = await axios.post('/api/contact', formData)
+      const response = await axios.post('https://portfolio-backend-sand-two.vercel.app/api/contact', formData)
       
       if (response.data.success) {
         toast.success(response.data.message)

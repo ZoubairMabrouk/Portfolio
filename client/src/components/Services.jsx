@@ -15,7 +15,7 @@ const Services = () => {
   useEffect(() => {
     const fetchServices = async () => {
       try {
-        const response = await axios.get('/api/services')
+        const response = await axios.get('https://portfolio-backend-sand-two.vercel.app/api/services')
         if (response.data.success) {
           setServices(response.data.services)
         }
