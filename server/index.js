@@ -143,14 +143,14 @@ app.post(
     body("message").trim().isLength({ min: 10, max: 1000 }).escape(),
   ],
   async (req, res) => {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      return res.status(400).json({
-        success: false,
-        message: "Validation failed",
-        errors: errors.array(),
-      });
-    }
+    // const errors = validationResult(req);
+    // if (!errors.isEmpty()) {
+    //   return res.status(400).json({
+    //     success: false,
+    //     message: "Validation failed",
+    //     errors: errors.array(),
+    //   });
+    // }
 
     const { name, email, subject, message } = req.body;
 
@@ -162,7 +162,8 @@ app.post(
           pass: process.env.EMAIL_PASS,
         },
       });
-
+      console.log(process.env.CONTACT_EMAIL)
+      console.log(name)
       const mailOptions = {
         from: process.env.EMAIL_USER,
         to: process.env.CONTACT_EMAIL || process.env.EMAIL_USER,
@@ -187,7 +188,7 @@ app.post(
       console.error("Contact form error:", error);
       res.status(500).json({
         success: false,
-        message: "Failed to send message. Please try again later.",
+        message: ("Failed to send message. Please try again later.", error),
       });
     }
   }
