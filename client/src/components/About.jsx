@@ -87,7 +87,7 @@ const About = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.4 }}
-            >
+            ><a href="/Zoubair_Mabrouk_CV.docx" download>
               <button className="btn btn-primary">
                 <span className="flex items-center">
                   Download CV
@@ -105,7 +105,8 @@ const About = () => {
                     />
                   </svg>
                 </span>
-              </button>
+                
+              </button></a>
             </motion.div>
           </div>
 
