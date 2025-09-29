@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { FaGithub, FaExternalLinkAlt, FaCode } from 'react-icons/fa'
-import axios from 'axios'
+import Api from '../services/Api'
 
 const Projects = () => {
   const [ref, inView] = useInView({
@@ -16,7 +16,7 @@ const Projects = () => {
   useEffect(() => {
     const fetchProjects = async () => {
       try {
-        const response = await axios.get('https://portfolio-backend-sand-two.vercel.app/api/projects')
+        const response = await Api.get('/projects')
         if (response.data.success) {
           setProjects(response.data.projects)
         }

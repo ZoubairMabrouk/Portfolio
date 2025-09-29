@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
-import { color, motion } from 'framer-motion'
+import {motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
-import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaLinkedin, FaGithub, FaTwitter, FaFacebook, FaInstagram, FaWhatsapp } from 'react-icons/fa'
-import axios from 'axios'
+import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaLinkedin, FaGithub, FaFacebook, FaInstagram} from 'react-icons/fa'
 import toast from 'react-hot-toast'
+import Api from '../services/Api'
 
 const Contact = () => {
   const [ref, inView] = useInView({
@@ -31,7 +31,7 @@ const Contact = () => {
     setIsSubmitting(true)
 
     try {
-      const response = await axios.post('http://localhost:5000/api/contact', formData)
+      const response = await Api.post('/contact', formData)
       
       if (response.data.success) {
         toast.success(response.data.message)

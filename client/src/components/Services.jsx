@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
-import axios from 'axios'
+import Api from '../services/Api'
 
 const Services = () => {
   const [ref, inView] = useInView({
@@ -15,7 +15,7 @@ const Services = () => {
   useEffect(() => {
     const fetchServices = async () => {
       try {
-        const response = await axios.get('https://portfolio-backend-sand-two.vercel.app/api/services')
+        const response = await Api.get('/services')
         if (response.data.success) {
           setServices(response.data.services)
         }
